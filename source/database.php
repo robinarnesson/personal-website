@@ -10,12 +10,15 @@ class database {
         INSERT INTO
           contacts
         SET
+          ip=INET6_ATON(?),
+          datetime=NOW(),
+          notification_sent=0,
           name=?,
           email=?,
           company=?
         ');
 
-    $statement->bind_param('sss', $_name, $_email, $_company);
+    $statement->bind_param('ssss', utilities::get_client_ip(), $_name, $_email, $_company);
     $statement->execute();
 
     return $mysql->insert_id;
@@ -30,15 +33,15 @@ class database {
         SET
           contact_id=?,
           ip=INET6_ATON(?),
-          filename=?,
-          datetime=NOW()
+          datetime=NOW(),
+          filename=?
         ');
 
     $statement->bind_param('iss', $_contact_id, utilities::get_client_ip(), $_filename);
     $statement->execute();
   }
 
-  private static function connect( ) {
+  public static function connect( ) {
     return new mysqli(
         constants::MYSQL_HOST,
         constants::MYSQL_USER,
@@ -50,6 +53,9 @@ class database {
 /*
   CREATE TABLE `contacts` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+    `ip` varbinary(16) DEFAULT NULL,
+    `datetime` datetime NOT NULL,
+    `notification_sent` bit(1) NOT NULL DEFAULT b'0',
     `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
     `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
     `company` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,

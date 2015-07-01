@@ -39,22 +39,6 @@ if (isset($_POST['download'])) {
     // Give access to files
     $_SESSION['token'] = utilities::get_random_string();
     $_SESSION['contact-id'] = $inserted_id;
-
-    $ip = utilities::get_client_ip();
-    $name = utilities::html_entities($_POST['input_name']);
-    $email = utilities::html_entities($_POST['input_email']);
-    $company = utilities::html_entities($_POST['input_company']);
-
-    // Build notify message
-    $message = "New contact.\n\n";
-    $message .= "Datetime: ".date('Y-m-d H:i:s')."\n";
-    $message .= "IP: ".($ip ? $ip : '-')."\n";
-    $message .= "Name: ".$name."\n";
-    $message .= "E-mail: ".$email."\n";
-    $message .= "Company: ".($company ? $company : '-')."\n\n";
-    $message .= "/".gethostname();
-
-    mail::send('C: '.$name.', '.$email, nl2br($message), array(constants::ROOT_EMAIL));
   }
 }
 
@@ -111,6 +95,9 @@ if (isset($_POST['download'])) {
           </li>
           <li>
             <a class="page-scroll" href="#contact">Contact</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#more">More</a>
           </li>
         </ul>
       </div>
@@ -244,6 +231,23 @@ if (isset($_POST['download'])) {
         </p>
         <a class="btn btn-default btn-lg bott-margin" href="http://kartor.eniro.se/m/8Rxip"
             target="_blank" role="button">Show map</a>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="more" class="container content-section text-center">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+
+        <i class="fa fa-link fa-4x bott-margin"></i> <h2>More</h2>
+        <p style="margin-bottom: 15px;">Some logotypes I've made.</p>
+        <a class="btn btn-default btn-lg bott-margin" href="https://500px.com/rejban/sets/logos"
+            target="_blank" role="button">Show</a>
+        <p></p>
+        <p style="margin-bottom: 15px;">My bookshelf at Goodreads.</p>
+        <a class="btn btn-default btn-lg bott-margin" href="https://www.goodreads.com/review/list/39247654-robin?utf8=%E2%9C%93&shelf=%23ALL%23&per_page=100"
+            target="_blank" role="button">Show</a>
 
       </div>
     </div>

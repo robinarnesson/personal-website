@@ -21,6 +21,7 @@ class mail {
     $mail->Username = constants::MAIL_USER;
     $mail->Password = constants::MAIL_PASS;
 
+    $mail->CharSet = 'UTF-8';
     $mail->setFrom(constants::MAIL_USER, constants::MAIL_FROM);
     $mail->Subject = $_subject;
     $mail->msgHTML($_message);
