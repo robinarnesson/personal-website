@@ -54,6 +54,7 @@ if (isset($_POST['download'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Personal website">
   <meta name="author" content="Robin Arnesson">
+  <meta name="theme-color" content="#555555">
 
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/grayscale.css" rel="stylesheet">
@@ -241,13 +242,29 @@ if (isset($_POST['download'])) {
       <div class="col-lg-8 col-lg-offset-2">
 
         <i class="fa fa-link fa-4x bott-margin"></i> <h2>More</h2>
-        <p style="margin-bottom: 15px;">Some logotypes I've made.</p>
-        <a class="btn btn-default btn-lg bott-margin" href="https://500px.com/rejban/sets/logos"
-            target="_blank" role="button">Show</a>
-        <p></p>
         <p style="margin-bottom: 15px;">My bookshelf at Goodreads.</p>
         <a class="btn btn-default btn-lg bott-margin" href="https://www.goodreads.com/review/list/39247654-robin?utf8=%E2%9C%93&shelf=%23ALL%23&per_page=100"
             target="_blank" role="button">Show</a>
+        <p></p>
+        <p style="margin-bottom: 15px;">Some logotypes I've made.</p>
+        <a class="btn btn-default btn-lg bott-margin" data-toggle="modal" data-target="#gallery"
+             role="button">Show</a>
+
+        <div class="modal fade" id="gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <img src="img/loggas.jpg" width="250" />
+                <img src="img/ebanco.jpg" width="250" />
+                <img src="img/jk.jpg" width="250" />
+                <img src="img/brightcar.jpg" width="250" />
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>
